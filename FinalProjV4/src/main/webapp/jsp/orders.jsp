@@ -7,26 +7,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Customers</title>
+<title>Orders</title>
 </head>
 <body>
-	<h1>SS RAD Final Project</h1>
+	<h1>List of Orders</h1>
 	<table>
 		<tr>
-			<th>Products</th>
-			<th>Customers</th>
-			<th>Orders</th>
+			<th>Order ID</th>
+			<th>Customer Name</th>
 		</tr>
-		<tr>
-			<td><a href="/showProducts" value="products">List Products</a></td>
-			<td><a href="/showCustomers" value="customers">List Customers</a></td>
-			<td><a href="/showOrders" value="orders">List Orders</a></td>
-		</tr>
-		<tr>
-			<td><a>Add Products</a></td>
-			<td><a>Add Customer</a></td>
-			<td><a></a>Add Orders</td>
-		</tr>
+			<c:forEach items="${orderList}" var="order">
+				<tr>
+					<td>${order.oId}</td>
+					<td>${order.getCust()}</td>
+				</tr>
+			</c:forEach>
 	</table>
 </body>
 </html>

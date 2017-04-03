@@ -7,27 +7,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Customers</title>
+<title>SS RAD Final Project</title>
 </head>
 <body>
-	<h1>SS RAD Final Project</h1>
+	<h1>Add New Product</h1>
 	<table>
 		<tr>
-			<th>Products</th>
-			<th>Customers</th>
-			<th>Orders</th>
+			<td><div>Product Description:</div></td>
+			<td><input type="text" name="pDesc"></input> </td>
 		</tr>
 		<tr>
-			<td><a href="/showProducts" value="products">List Products</a></td>
-			<td><a href="/showCustomers" value="customers">List Customers</a></td>
-			<td><a href="/showOrders" value="orders">List Orders</a></td>
-		</tr>
-		<tr>
-			<td><a>Add Products</a></td>
-			<td><a>Add Customer</a></td>
-			<td><a></a>Add Orders</td>
+			<td><div>Quantity in Stock</div></td>
+			<td><input type="text" name="qtyInStock"></input> </td>
 		</tr>
 	</table>
+	<button>Add</button>
+	<div><a href="/">Home</a> <a href="showProducts">List Products</a> <a href="showOrders">List Orders</a> </div>
 </body>
 </html>
 

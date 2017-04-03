@@ -10,23 +10,20 @@
 <title>Customers</title>
 </head>
 <body>
-	<h1>SS RAD Final Project</h1>
+	<h1>List of Customers</h1>
 	<table>
 		<tr>
-			<th>Products</th>
-			<th>Customers</th>
-			<th>Orders</th>
+			<th>Customer ID</th>
+			<th>Name</th>
+
 		</tr>
-		<tr>
-			<td><a href="/showProducts" value="products">List Products</a></td>
-			<td><a href="/showCustomers" value="customers">List Customers</a></td>
-			<td><a href="/showOrders" value="orders">List Orders</a></td>
-		</tr>
-		<tr>
-			<td><a>Add Products</a></td>
-			<td><a>Add Customer</a></td>
-			<td><a></a>Add Orders</td>
-		</tr>
+			<c:forEach items="${customerList}" var="customer">
+				<tr>
+					<td>${customer.cId}</td>
+					<td>${customer.cName}</td>
+
+				</tr>
+			</c:forEach>
 	</table>
 </body>
 </html>
