@@ -20,5 +20,10 @@ public class OrderService {
 		ol.addAll((List<Order>) orderRepository.findAll());
 		return ol;
 	}
+	
+	public void addOrder(Order order){
+		orderRepository.save(order);
+	}
+	
 
 }

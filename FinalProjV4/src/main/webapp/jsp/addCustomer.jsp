@@ -7,23 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SS RAD Final Project</title>
+<title>Add Customer</title>
 </head>
 <body>
-	<h1>Add New Product</h1>
-	<form:form modelAttribute="product">
+	<h1>Add New Customer</h1>
+	<form:form modelAttribute="customer">
 		<table>
 			<tr>
-				<td><div>Product Description:</div></td>
-				<td><form:input path="pDesc" /></td>
-				<td><form:errors path="pDesc"></form:errors></td>
-				
-			</tr>
-			<tr>
-				<td><div>Quantity in Stock</div></td>
-				<td><form:input path="qtyInStock" /></td>
-				<td><form:errors path="qtyInStock"></form:errors></td>
-				
+				<td><div>Customer name:</div></td>
+				<td><form:input path="cName" /></td>
+				<td><form:errors path="cName"></form:errors></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Add" /></td>
@@ -36,4 +29,3 @@
 	</div>
 </body>
 </html>
-

@@ -18,14 +18,14 @@
 			<th>Orders</th>
 		</tr>
 		<tr>
-			<td><a href="/showProducts" value="products">List Products</a></td>
-			<td><a href="/showCustomers" value="customers">List Customers</a></td>
-			<td><a href="/showOrders" value="orders">List Orders</a></td>
+			<td><a href="/showProducts">List Products</a></td>
+			<td><a href="/showCustomers">List Customers</a></td>
+			<td><a href="/showOrders">List Orders</a></td>
 		</tr>
 		<tr>
-			<td><a>Add Products</a></td>
-			<td><a>Add Customer</a></td>
-			<td><a></a>Add Orders</td>
+			<td><a href="/addProduct">Add Products</a></td>
+			<td><a href="/addCustomer">Add Customer</a></td>
+			<td><a href="/addOrder">Add Orders</a></td>
 		</tr>
 	</table>
 </body>

@@ -21,4 +21,16 @@ public class CustomerService {
 		return cl;
 	}
 
+	public void addCustomer(Customer customer){
+		customerRepository.save(customer);
+	}
+	
+	public boolean validateCustomerId(Long id){
+		Customer c = customerRepository.findOne(id);
+		if(c == null){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

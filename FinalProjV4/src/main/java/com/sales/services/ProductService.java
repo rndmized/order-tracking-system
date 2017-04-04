@@ -20,5 +20,23 @@ public class ProductService {
 		pl.addAll((List<Product>) productRepository.findAll());
 		return pl;
 	}
+	
+	public void addProduct(Product product){
+		productRepository.save(product);
+	}
+	
+	public boolean isProductInStock(Long id, int qty){
+		Product p = productRepository.findOne(id);
+		if (p != null){
+			if((p.getQtyInStock() - qty) < 0){
+				return false;
+			} else {
+				return true;
+			}
+			
+		}else{
+			return false;
+		}
+	}
 
 }
