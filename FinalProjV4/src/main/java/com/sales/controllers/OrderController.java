@@ -1,6 +1,5 @@
 package com.sales.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,12 +10,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.sales.models.Order;
 import com.sales.services.CustomerService;
 import com.sales.services.OrderService;
 import com.sales.services.ProductService;
 
+@SessionAttributes(value = "message")
 @org.springframework.stereotype.Controller
 public class OrderController {
 
@@ -35,36 +36,43 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/addOrder", method = RequestMethod.GET)
-	public String getAddOrder(@ModelAttribute("order") Order order) {
+	public String getAddOrder(@ModelAttribute("order") Order order, Model model) {
+		String message = "";
+		model.addAttribute("message", message);
 		return "addOrder";
 	}
 
 	@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
-	public String addOrder(@ModelAttribute("order") @Valid Order order, @ModelAttribute("msg") String message, BindingResult result) {
+	public String addOrder(Model model, @ModelAttribute("order") @Valid Order order, BindingResult result, @ModelAttribute("message") String message) {
 		if (result.hasErrors()) {
-			return "addProduct";
+			System.out.println("HAS ERRORS!");
+			return "addOrder";
 		} else {
-			// Set Date to current (Format date)
-			order.setOrderDate(new Date().toString());
+			
 			// Check user id
-			boolean validCustomer = cs.validateCustomerId(order.getCust().getcId());
+			String validUser = cs.validateCustomerId(order.getCust().getcId());
 			// Check stock
-			boolean validOrder = ps.isProductInStock(order.getProd().getpId(), order.getQty());
-			if (validCustomer && validOrder) {
+			String validProduct = ps.isProductInStock(order.getProd().getpId(), order.getQty());
+			
+			message = "";
+			
+			if(!validUser.isEmpty()){
+				message = String.join(" ", message, validUser);
+			}
+			if(!validProduct.isEmpty()){
+				message = String.join(" ", message, validProduct);
+			}
+			if (message.isEmpty()){
 				os.addOrder(order);
 				return "redirect:showOrders";
-			} else if (validCustomer && !validOrder) {
-				message ="Invalid Stock";
-				System.out.println(message);
-			} else if (!validCustomer && validOrder) {
-				message = "Invalid Customer";
-				System.out.println(message);
-			} else {
-				message = "Invalid Customer & invalid Stock";
-				System.out.println(message);
 			}
-			return "addOrder";
+			model.addAttribute("message", message);
+			return "orderError";
 		}
+	}
 
+	@RequestMapping(value = "/orderError", method = RequestMethod.GET)
+	public String getAddOrderError(@ModelAttribute("order") Order order, @ModelAttribute("message") String message) {
+		return "orderError";
 	}
 }

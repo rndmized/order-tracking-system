@@ -7,33 +7,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Customer</title>
+<title></title>
 </head>
 <body>
-	<h1>Add New Order</h1>
+<h1>Error Creating the following Order</h1>
+	<form:form modelAttribute="message">
+		<h2>${message}</h2>
+	</form:form>
 	<form:form modelAttribute="order">
 		<table>
 			<tr>
-				<td><div>Customer ID:</div></td>
-				<td><form:input path="cust.cId" /></td>
+				<th>Product ID</th>
+				<th>Customer ID</th>
+				<th>Quantity</th>
 			</tr>
 			<tr>
-				<td><div>Product ID:</div></td>
-				<td><form:input path="prod.pId" /></td>
-			</tr>
-			<tr>
-				<td><div>Quantity:</div></td>
-				<td><form:input path="qty" /></td>
-				<td><form:errors path="qty"></form:errors></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Add" /></td>
+				<td>${order.prod.pId}</td>
+				<td>${order.cust.cId}</td>
+				<td>${order.qty}</td>
 			</tr>
 		</table>
 	</form:form>
 	<div>
-		<a href="/">Home</a> <a href="showCustomers">List Customers</a> <a
-			href="showProducts">List Products</a>
+		<a href="/">Home</a> <a href="addOrder">New Order</a> <a
+			href="showOrders">List Orders</a>
 	</div>
 </body>
 </html>

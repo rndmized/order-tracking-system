@@ -25,12 +25,12 @@ public class CustomerService {
 		customerRepository.save(customer);
 	}
 	
-	public boolean validateCustomerId(Long id){
+	public String validateCustomerId(Long id){
 		Customer c = customerRepository.findOne(id);
-		if(c == null){
-			return false;
+		if(c != null){
+			return "";
 		}else{
-			return true;
+			return "No such customer: " + id;
 		}
 	}
 }

@@ -1,6 +1,8 @@
 package com.sales.services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,12 @@ public class OrderService {
 		ol.addAll((List<Order>) orderRepository.findAll());
 		return ol;
 	}
-	
-	public void addOrder(Order order){
+
+	public void addOrder(Order order) {
+		// Set Date to current (Format date)
+		SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+		order.setOrderDate(dt1.format(new Date()));
 		orderRepository.save(order);
 	}
-	
 
 }

@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link type="text/css" href="css/styles.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Orders</title>
 </head>
@@ -13,29 +14,28 @@
 	<h1>List of Orders</h1>
 	<c:forEach items="${orderList}" var="order">
 		<h2>${order.oId}</h2>
-		<table>
+		<table  class="table">
 			<tr>
-				<th>Quantity</th>
-				<th>Order Date</th>
-				<th>Customer ID</th>
-				<th>Customer Name</th>
-				<th>Product ID</th>
-				<th>Description</th>
+				<th class="th">Quantity</th>
+				<th class="th">Order Date</th>
+				<th class="th">Customer ID</th>
+				<th class="th">Customer Name</th>
+				<th class="th">Product ID</th>
+				<th class="th">Description</th>
 			</tr>
 			<tr>
-				<td>${order.qty}</td>
-				<td>${order.orderDate}</td>
-				<td>${order.cust.cId}</td>
-				<td>${order.cust.cName}</td>
-				<td>${order.prod.pId}</td>
-				<td>${order.prod.pDesc}</td>
+				<td class="td">${order.qty}</td>
+				<td class="td">${order.orderDate}</td>
+				<td class="td">${order.cust.cId}</td>
+				<td class="td">${order.cust.cName}</td>
+				<td class="td">${order.prod.pId}</td>
+				<td class="td">${order.prod.pDesc}</td>
 			</tr>
 		</table>
 	</c:forEach>
 	<div>
-		<a href="/">Home</a> <a href="addOrder">Add Order</a> <a
-			href="showProducts">List Products</a> <a href="showOrders">List
-			Orders</a> <a href="">Logout</a>
+		<a href="/">Home</a> <a href="addOrder">Add Order</a> <a href="showCustomers">List
+			Customers</a> <a href="showProducts">List Products</a> <a href="/logout">Logout</a>
 	</div>
 </body>
 </html>

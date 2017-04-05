@@ -25,18 +25,17 @@ public class ProductService {
 		productRepository.save(product);
 	}
 	
-	public boolean isProductInStock(Long id, int qty){
+	public String isProductInStock(Long id, int qty){
 		Product p = productRepository.findOne(id);
 		if (p != null){
-			if((p.getQtyInStock() - qty) < 0){
-				return false;
-			} else {
-				return true;
+			if((p.getQtyInStock() - qty) < 0 ){
+				return "Quantity too large: Product stock =" + p.getQtyInStock();
 			}
-			
-		}else{
-			return false;
+		} else {
+			return "No such product: " + id;
 		}
+		return "";
+		
 	}
 
 }

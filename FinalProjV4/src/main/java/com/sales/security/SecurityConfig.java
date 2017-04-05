@@ -7,21 +7,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{ 
-  @Override
-  public void configure(HttpSecurity httpSecurity) throws Exception{
-    httpSecurity.authorizeRequests()
-     .antMatchers("/showProducts", "/showOrders", "/showCustomers", "/*")
-     .hasRole("USER")
-     .and()
-     .formLogin();
-  }
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	@Override
+	public void configure(HttpSecurity httpSecurity) throws Exception {
+		httpSecurity.authorizeRequests().antMatchers("/showProducts", "/showOrders", "/showCustomers", "/addOrder",
+				"/addCustomer", "/addProduct").hasRole("USER").and().formLogin();
+	}
 
-  @Autowired
-  public void configureGlobal(AuthenticationManagerBuilder auth) 
-						throws Exception {
-    auth.inMemoryAuthentication()
-      .withUser("user").password("user").roles("USER");
-  }
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+	}
 }
-
